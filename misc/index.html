@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Misc – Diego Arana Segura</title>
-  <meta name="description" content="Technical projects by Diego Arana Segura: automated essay grading with GPT-4 and a simulation of Lewis signaling systems.">
+  <meta name="description" content="Technical projects by Diego Arana Segura: a reading-group assistant built on Claude Code, a PDF annotation extractor, automated essay grading with GPT-4, and a simulation of Lewis signaling systems.">
   <link rel="canonical" href="https://diegoaranasegura.com/misc/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Diego Arana Segura">
   <meta property="og:title" content="Misc – Diego Arana Segura">
-  <meta property="og:description" content="Technical projects: automated essay grading with GPT-4 and a simulation of Lewis signaling systems.">
+  <meta property="og:description" content="Technical projects: a reading-group assistant, a PDF annotation extractor, automated essay grading, and a Lewis signaling simulation.">
   <meta property="og:url" content="https://diegoaranasegura.com/misc/">
   <meta property="og:image" content="https://diegoaranasegura.com/assets/profile.jpg">
   <meta name="twitter:card" content="summary">
@@ -37,6 +37,18 @@
       <h1>Misc</h1>
 
       <h2>Technical Projects</h2>
+
+      <article class="entry">
+        <h3>Reading Group Assistant</h3>
+        <p><a href="https://github.com/diegoaranas/reading-group-assistant">github.com/diegoaranas/reading-group-assistant</a></p>
+        <p>A Claude Code project for running a text-based reading group. It splits the work between the facilitator and the model: the model summarizes the text before the meeting and, afterwards, synthesizes the text together with the group’s annotations and a transcript of the discussion, producing a written account of what the conversation added to the reading. The human steps in between (reading, annotating, meeting, recording) stay human. Each session is kept as a self-contained folder of artifacts, with optional audio transcription, speaker labelling, and export of the synthesis to PDF.</p>
+      </article>
+
+      <article class="entry">
+        <h3>PDF Annotations to Markdown</h3>
+        <p><a href="https://github.com/diegoaranas/pdf-annotations-to-markdown">github.com/diegoaranas/pdf-annotations-to-markdown</a></p>
+        <p>A small Python library and command-line tool that extracts the annotations in a PDF (highlights, underlines, strikeouts, and comments) and writes them out as a readable Markdown document, grouped by author or by page. It keeps the comment text, the markup type, and the color of each annotation, so a color-coded reading survives the conversion. It is also the component the Reading Group Assistant uses to collect members’ marked-up copies of a text.</p>
+      </article>
 
       <article class="entry">
         <h3>Automated Essay Grading</h3>
