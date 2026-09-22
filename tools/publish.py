@@ -14,8 +14,10 @@ The source checkout must contain a `publish/` folder with two files:
                              PDF    path of the PDF inside the source repo
                              LABEL  short text shown on the site, e.g. "March 2026"
                              PAGE   (optional) page to splice into, default research/index.html
-    publish/entry.html     the HTML snippet for that page; {{SLUG}} and {{LABEL}}
-                           are substituted
+    publish/entry.html     the HTML snippet for that page; {{SLUG}}, {{LABEL}} and
+                           {{VERSION}} are substituted.  VERSION is a short hash of
+                           the PDF: link to /files/{{SLUG}}.pdf?v={{VERSION}} so
+                           browsers fetch the new file instead of a cached one
 
 What happens on publish:
   * <source>/<PDF>  is copied to  <site>/files/<SLUG>.pdf
@@ -26,6 +28,7 @@ What happens on publish:
 On unpublish both are removed.  Committing and pushing is the workflow's job.
 """
 import argparse
+import hashlib
 import re
 import shutil
 import sys
@@ -95,7 +98,7 @@ def check_entry(entry: str, slug: str) -> None:
         die("entry.html must contain some HTML")
     objects = re.findall(r"<\s*object\b", entry, flags=re.I)
     datas = OBJECT_DATA.findall(entry)
-    if len(objects) != len(datas) or any(d != f"/files/{slug}.pdf" for d in datas):
+    if len(objects) != len(datas) or any(d.split("?", 1)[0] != f"/files/{slug}.pdf" for d in datas):
         die(f"an <object> in entry.html may only embed /files/{slug}.pdf")
 
 
@@ -132,7 +135,9 @@ def main() -> None:
         with entry_path.open(encoding="utf-8", newline="") as fh:
             entry = fh.read().replace("\r\n", "\n")
         entry = re.sub(r"<!--.*?-->", "", entry, flags=re.S).strip("\n")
-        entry = entry.replace("{{SLUG}}", slug).replace("{{LABEL}}", label)
+        version = hashlib.sha256(pdf_src.read_bytes()).hexdigest()[:8]
+        entry = (entry.replace("{{SLUG}}", slug).replace("{{LABEL}}", label)
+                      .replace("{{VERSION}}", version))
         check_entry(entry, slug)
         # indent to match the page source; blank lines stay blank
         marker_line_start = html.rfind("\n", 0, html.index(MARKER)) + 1
