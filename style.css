@@ -1,0 +1,118 @@
+/* diegoaranasegura.com — single stylesheet */
+
+:root {
+  color-scheme: light dark;
+  --bg: #fcfcfa;
+  --fg: #1c1c1c;
+  --muted: #5f5f5f;
+  --rule: #d9d9d4;
+  --link: #1d4f91;
+  --link-hover: #0f3466;
+  --accent-bg: #f1f1ec;
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, "Times New Roman", serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131313;
+    --fg: #e4e4e0;
+    --muted: #a0a09a;
+    --rule: #333330;
+    --link: #8ab4f8;
+    --link-hover: #b3cdfa;
+    --accent-bg: #1e1e1c;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: 106.25%; -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--serif);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a { color: var(--link); text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+a:hover { color: var(--link-hover); }
+a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+.wrap { width: 100%; max-width: 44rem; margin: 0 auto; padding: 0 1rem; }
+
+/* Header / nav */
+.site-header { border-bottom: 1px solid var(--rule); font-family: var(--sans); }
+.site-header .wrap {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 0.5rem 1.5rem; padding-top: 1.1rem; padding-bottom: 1.1rem;
+}
+.site-title { font-weight: 600; font-size: 1.1rem; color: var(--fg); text-decoration: none; letter-spacing: 0.01em; }
+.site-title:hover { color: var(--link); }
+.site-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.1rem; }
+.site-nav a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
+.site-nav a:hover { color: var(--link); }
+.site-nav a[aria-current="page"] { color: var(--fg); font-weight: 600; }
+
+/* Main */
+main { flex: 1; }
+main .wrap { padding-top: 2rem; padding-bottom: 3rem; }
+
+h1, h2, h3 { font-family: var(--sans); line-height: 1.25; margin: 0 0 0.6em; }
+h1 { font-size: 1.7rem; font-weight: 700; }
+h2 { font-size: 1.25rem; font-weight: 700; margin-top: 2.2rem; padding-bottom: 0.3em; border-bottom: 1px solid var(--rule); }
+h2:first-child { margin-top: 0; }
+h3 { font-size: 1.05rem; font-weight: 600; margin-top: 1.6rem; }
+p { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+
+/* Home */
+.about { display: grid; grid-template-columns: 1fr; gap: 1.5rem 2.5rem; align-items: start; }
+.about .portrait { width: 12rem; border-radius: 6px; margin: 0 auto; }
+@media (min-width: 40rem) {
+  .about { grid-template-columns: minmax(0, 1fr) 13rem; }
+  .about .portrait { width: 100%; margin: 0.3rem 0 0; }
+}
+
+/* Research entries */
+.entry { margin-bottom: 1.4rem; }
+.entry h3 { margin-bottom: 0.15em; }
+.entry .venue { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.4em; }
+.entry details { margin: 0.2rem 0 0.5rem; }
+.entry summary { cursor: pointer; font-family: var(--sans); font-size: 0.9rem; color: var(--muted); }
+.entry summary:hover { color: var(--link); }
+.entry details p { margin-top: 0.5em; }
+.entry .links { font-family: var(--sans); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; }
+.entry .links a {
+  text-decoration: none; padding: 0.15em 0.7em; border: 1px solid var(--rule); border-radius: 999px; background: var(--accent-bg);
+}
+.entry .links a:hover { border-color: var(--link); }
+
+/* Buttons and embeds */
+.button {
+  display: inline-block; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; text-decoration: none;
+  padding: 0.5em 1.1em; border: 1px solid var(--link); border-radius: 6px; color: var(--link);
+}
+.button:hover { background: var(--link); color: var(--bg); }
+.pdf-embed { width: 100%; height: 80vh; min-height: 30rem; border: 1px solid var(--rule); border-radius: 6px; margin-top: 1.5rem; }
+@media (max-width: 40rem) { .pdf-embed { display: none; } }
+
+/* Contact */
+.contact-list { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+.contact-list li { margin-bottom: 0.5em; }
+.contact-list .label { font-family: var(--sans); font-size: 0.85rem; color: var(--muted); display: block; }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 0.9rem; color: var(--muted); }
+.site-footer .wrap { padding-top: 1.2rem; padding-bottom: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.3rem 0.6rem; }
+.site-footer a { color: var(--muted); }
+.site-footer a:hover { color: var(--link); }
+
+.muted { color: var(--muted); }

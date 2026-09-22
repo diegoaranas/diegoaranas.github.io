@@ -1,0 +1,6 @@
+# Scraped originals from the old WordPress site (kept locally for reference)
+archive/
+
+# OS noise
+.DS_Store
+Thumbs.db
