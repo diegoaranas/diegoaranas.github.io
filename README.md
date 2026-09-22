@@ -12,7 +12,7 @@ misc/index.html       Technical projects
 style.css             The only stylesheet (light and dark)
 files/                PDFs: cv.pdf plus one PDF per published draft
 assets/               Profile photo, favicon
-tools/publish.py      Splices a draft's PDF and entry into research/index.html
+tools/publish.py      Splices a published PDF and its block into a page
 ```
 
 ## Editing
@@ -20,19 +20,20 @@ tools/publish.py      Splices a draft's PDF and entry into research/index.html
 Edit the HTML, commit, push. Pages redeploys in about a minute. There is no
 build step and nothing to install.
 
-## Draft papers
+## Published files (draft papers, CV)
 
-Draft entries on the Research page are **not edited here**. Each paper lives in
-its own private repo, which carries a `publish/` folder (`publish.env` naming
-the PDF to publish and its label, `entry.html` with the title and abstract) and
-a manual GitHub Actions workflow. Running that workflow checks out this repo,
-runs `tools/publish.py`, and pushes the result:
+The draft entries on the Research page and the block on the CV page are **not
+edited here**. Each paper lives in its own private repo, and so does the CV; each
+carries a `publish/` folder (`publish.env` naming the PDF to publish, its label
+and, for the CV, the target page; `entry.html` with the HTML block) and a manual
+GitHub Actions workflow. Running that workflow checks out this repo, runs
+`tools/publish.py`, and pushes the result:
 
 - the PDF lands at `files/<slug>.pdf`;
-- the entry is spliced into `research/index.html` between
-  `<!-- draft:<slug> -->` and `<!-- /draft:<slug> -->`, right after the
-  `<!-- drafts -->` marker on first publish, in place afterwards.
+- the block is spliced into the target page between
+  `<!-- published:<slug> -->` and `<!-- /published:<slug> -->`, right after the
+  `<!-- published -->` marker on first publish, in place afterwards.
 
-Running the workflow with `action=unpublish` removes both again. The draft
+Running the workflow with `action=unpublish` removes both again. The source
 repos authenticate with a fine-grained token (secret `SITE_DEPLOY_TOKEN`)
 scoped to this repository only, Contents read and write.
