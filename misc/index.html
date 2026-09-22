@@ -40,26 +40,28 @@
 
       <article class="entry">
         <h3>Reading Group Assistant</h3>
+        <p class="venue">Started June 2026</p>
         <p><a href="https://github.com/diegoaranas/reading-group-assistant">github.com/diegoaranas/reading-group-assistant</a></p>
         <p>A Claude Code project for running a text-based reading group. It splits the work between the facilitator and the model: the model summarizes the text before the meeting and, afterwards, synthesizes the text together with the group’s annotations and a transcript of the discussion, producing a written account of what the conversation added to the reading. The human steps in between (reading, annotating, meeting, recording) stay human. Each session is kept as a self-contained folder of artifacts, with optional audio transcription, speaker labelling, and export of the synthesis to PDF.</p>
       </article>
 
       <article class="entry">
         <h3>PDF Annotations to Markdown</h3>
+        <p class="venue">Started June 2025</p>
         <p><a href="https://github.com/diegoaranas/pdf-annotations-to-markdown">github.com/diegoaranas/pdf-annotations-to-markdown</a></p>
         <p>A small Python library and command-line tool that extracts the annotations in a PDF (highlights, underlines, strikeouts, and comments) and writes them out as a readable Markdown document, grouped by author or by page. It keeps the comment text, the markup type, and the color of each annotation, so a color-coded reading survives the conversion. It is also the component the Reading Group Assistant uses to collect members’ marked-up copies of a text.</p>
       </article>
 
       <article class="entry">
         <h3>Automated Essay Grading</h3>
-        <p class="venue">(with Bram Vaassen)</p>
+        <p class="venue">Started January 2024 · with Bram Vaassen</p>
         <p><a href="https://github.com/diegoaranas/gpt-grading">github.com/diegoaranas/gpt-grading</a></p>
-        <p>We developed a Python-based tool designed to assist instructions in grading student essays using OpenAI’s GPT-4 API. It allows educators to input a grading rubric and a set of student assignments, and then generates GPT-4-based evaluations and scores for each submission. The tool includes features for comparing AI-generated grades with human-assigned ones, facilitating analysis of grading consistency and potential biases. It is particularly tailored for philosophy courses but can be adapted for other disciplines with rubric-based assessments.</p>
+        <p>We developed a Python-based tool designed to assist instructors in grading student essays using OpenAI’s GPT-4 API. It allows educators to input a grading rubric and a set of student assignments, and then generates GPT-4-based evaluations and scores for each submission. The tool includes features for comparing AI-generated grades with human-assigned ones, facilitating analysis of grading consistency and potential biases. It is particularly tailored for philosophy courses but can be adapted for other disciplines with rubric-based assessments. Built in early 2024, when GPT-4 had an 8,000-token context window, the tool counted tokens with tiktoken and, whenever a rubric plus essay would not fit, had GPT-4 compress the essay (and a compressed version of the assignment instructions) down to a token budget before grading. We presented the tool and its results at the <a href="/research/#teaching-hub-2024">2024 AAPT-APA Teaching Hub</a>.</p>
       </article>
 
       <article class="entry">
         <h3>Simulation of Lewis-Signaling Systems</h3>
-        <p class="venue">(with Nurit Matuk)</p>
+        <p class="venue">Started February 2020 · with Nurit Matuk</p>
         <p><a href="https://github.com/nuritmb/monitos">github.com/nuritmb/monitos</a></p>
         <p>This is a Python-based simulation project that models interactions between virtual agents—specifically monkeys and predators—within a dynamic environment. Inspired by Brian Skyrms’ book <em>Signals</em>, which explores how language and signaling systems emerge in nature, the project investigates how basic communication systems can evolve within communities of vervet monkeys. It includes scripts for generating agents, simulating behaviors such as reproduction, alert signaling, and predator evasion, and analyzing the outcomes of these interactions. The project enables experimentation with different behavioral parameters and environmental conditions to better understand the conditions under which stable signaling conventions might emerge.</p>
       </article>
