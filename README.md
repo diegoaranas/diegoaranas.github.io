@@ -20,6 +20,14 @@ tools/publish.py      Splices a published PDF and its block into a page
 Edit the HTML, commit, push. Pages redeploys in about a minute. There is no
 build step and nothing to install.
 
+## Stats
+
+Page views come from [GoatCounter](https://diegoaranasegura.goatcounter.com/):
+a `<script>` tag in the `<head>` of every page. A second inline script there
+counts clicks on any `.pdf` link (CV, drafts) as an event named after the
+file path, so PDF opens from the site show up under Events. New pages need the
+same two tags copied in.
+
 ## Published files (draft papers, CV)
 
 The draft entries on the Research page and the block on the CV page are **not

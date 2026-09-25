@@ -15,6 +15,16 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
+  <script data-goatcounter="https://diegoaranasegura.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script>
+    // Count clicks on PDF links (CV, drafts) as GoatCounter events.
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a[href*=".pdf"]') : null;
+      if (!a || !window.goatcounter || !window.goatcounter.count) return;
+      var p = a.getAttribute('href').split('?')[0];
+      window.goatcounter.count({path: p, title: 'PDF ' + p, event: true});
+    });
+  </script>
 </head>
 <body>
   <header class="site-header">
