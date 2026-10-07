@@ -1,7 +1,8 @@
 # diegoaranasegura.com
 
-Personal academic site. Plain HTML and one stylesheet, served by GitHub Pages
-from this repo's `main` branch with the custom domain in `CNAME`.
+Personal academic site. Plain HTML, one stylesheet and one small script, served
+by GitHub Pages from this repo's `main` branch with the custom domain in
+`CNAME`.
 
 ```
 index.html            Home
@@ -10,6 +11,7 @@ cv/index.html         CV (embeds files/cv.pdf)
 contact/index.html    Contact
 misc/index.html       Technical projects
 style.css             The only stylesheet (light and dark)
+nav.js                Collapses the menu behind a toggle on narrow screens
 files/                PDFs: cv.pdf plus one PDF per published draft
 assets/               Profile photo, favicon
 tools/publish.py      Splices a published PDF and its block into a page
@@ -26,7 +28,8 @@ Page views come from [GoatCounter](https://diegoaranasegura.goatcounter.com/):
 a `<script>` tag in the `<head>` of every page. A second inline script there
 counts clicks on any `.pdf` link (CV, drafts) as an event named after the
 file path, so PDF opens from the site show up under Events. New pages need the
-same two tags copied in.
+same two tags copied in, plus the `/nav.js` script tag and the header (with its
+`nav-toggle` button) from an existing page.
 
 ## Published files (draft papers, CV)
 

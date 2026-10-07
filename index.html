@@ -15,6 +15,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/style.css">
+  <script src="/nav.js"></script>
   <script data-goatcounter="https://diegoaranasegura.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
   <script>
     // Count clicks on PDF links (CV, drafts) as GoatCounter events.
@@ -30,7 +31,11 @@
   <header class="site-header">
     <div class="wrap">
       <a class="site-title" href="/">Diego Arana Segura</a>
-      <nav class="site-nav" aria-label="Main">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Menu
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
         <ul>
           <li><a href="/" aria-current="page">Home</a></li>
           <li><a href="/research/">Research</a></li>

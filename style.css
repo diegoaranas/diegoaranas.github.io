@@ -61,6 +61,23 @@ img { max-width: 100%; height: auto; display: block; }
 .site-nav a:hover { color: var(--link); }
 .site-nav a[aria-current="page"] { color: var(--fg); font-weight: 600; }
 
+/* Narrow screens: the menu collapses behind a toggle (nav.js sets .js) */
+.nav-toggle { display: none; }
+@media (max-width: 40rem) {
+  .js .site-header .wrap { align-items: center; }
+  .js .nav-toggle {
+    display: inline-flex; align-items: center; gap: 0.45em; cursor: pointer;
+    font: inherit; font-size: 0.95rem; color: var(--muted); background: none;
+    border: 1px solid var(--rule); border-radius: 6px; padding: 0.3em 0.75em;
+  }
+  .js .nav-toggle:hover, .js .nav-toggle[aria-expanded="true"] { color: var(--fg); border-color: var(--muted); }
+  .js .nav-toggle:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+  .js .site-nav { display: none; flex-basis: 100%; }
+  .js .nav-toggle[aria-expanded="true"] + .site-nav { display: block; }
+  .js .site-nav ul { flex-direction: column; gap: 0; }
+  .js .site-nav a { display: block; padding: 0.55rem 0; border-top: 1px solid var(--rule); }
+}
+
 /* Main */
 main { flex: 1; }
 main .wrap { padding-top: 2rem; padding-bottom: 3rem; }
