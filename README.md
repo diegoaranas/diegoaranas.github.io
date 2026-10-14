@@ -10,6 +10,7 @@ research/index.html   Papers and conference presentations
 cv/index.html         CV (embeds files/cv.pdf)
 contact/index.html    Contact
 misc/index.html       Technical projects
+talks/<slug>/         Talk handouts: unlinked pages, filled by tools/publish.py
 style.css             The only stylesheet (light and dark)
 nav.js                Collapses the menu behind a toggle on narrow screens
 files/                PDFs: cv.pdf plus one PDF per published draft
