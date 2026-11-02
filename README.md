@@ -69,7 +69,8 @@ python tools/publish.py --action publish --draft papers/equivalencetheoryexpansi
 Every public paper also goes on PhilSci-Archive or PhilArchive, or both
 (`[archive] targets` in its `paper.toml`; the first is the primary). Once a
 paper has an id on its primary archive, its Research entry links to that
-archive's record page, with the local PDF after it.
+archive's record page, labelled "Draft", instead of the local PDF (which
+stays in `files/`, unlinked, so old links keep working).
 
 Nothing here logs in to or submits to an archive: uploading is done by hand.
 Neither archive documents a deposit API (PhilPapers' API is read-only), so none

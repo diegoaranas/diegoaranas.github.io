@@ -25,8 +25,8 @@ these two files (the CV, talk handouts):
                            publish.env keys; the entry is rendered from title,
                            journal, abstract, final_url and [archive]. Once the
                            primary archive (first of archive.targets) has an id,
-                           the entry links to its record page ahead of the local
-                           PDF. site_pdf = false serves no local copy. The full
+                           the entry links only to its record page ("Draft"); the
+                           local PDF stays in files/ but is no longer linked. The full
                            schema is documented in tools/deposit.py.
 
 What happens on publish:
@@ -104,7 +104,8 @@ def render_entry(paper: dict) -> str:
     if targets and paper["archive"][targets[0]].get("id"):
         rec = paper["archive"][targets[0]]
         links.append((record_url(targets[0], rec), "Draft"))
-    if paper["site_pdf"]:
+    elif paper["site_pdf"]:
+        # the local copy is linked only until the paper has an archive record
         links.append(("/files/{{SLUG}}.pdf?v={{VERSION}}", "PDF"))
     if paper.get("final_url"):
         links.append((paper["final_url"], "Final"))
