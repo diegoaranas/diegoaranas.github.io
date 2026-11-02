@@ -36,6 +36,8 @@ page through tools/publish.py.  Schema:
 
     [archive]
     targets = ["philsci", "philarchive"]      where it goes; the site links to the first
+    philpapers = "ARAEAT-3"                   (optional) the paper's PhilPapers entry, when
+                                              it already offers the primary archive's copy
 
     [archive.philsci]                         one table per target; `record` fills in
     subjects = ["..."]                        id, url, version, date and sha256 (of the
@@ -132,6 +134,9 @@ def cmd_status(args) -> None:
             where = f" #{rec['id']}" if rec.get("id") else ""
             print(f"{paper['slug']}: {ARCHIVES[name][0]}{where}: {state}"
                   + (f" ({detail})" if detail else ""))
+        if paper["archive"].get("philpapers"):
+            print(f"{paper['slug']}: PhilPapers entry "
+                  f"https://philpapers.org/rec/{paper['archive']['philpapers']}")
 
 
 def wrap(text: str) -> str:
@@ -186,6 +191,10 @@ def checklist(paper: dict, name: str, pdf_name: str, digest: str, folder: Path) 
                   "    If the archive gives the new version its own id, record that id."]
     else:
         lines += [f"[ ] Search {arch} for the title first: it must not be there already."]
+    if name == "philarchive" and name != paper["archive"]["targets"][0]:
+        lines += ["[ ] Search PhilPapers too. If it already has an entry offering the "
+                  f"{ARCHIVES[paper['archive']['targets'][0]][0]} copy, don't deposit: put",
+                  "    philpapers = \"<entry id>\" in [archive] and drop philarchive from targets."]
     lines += [
         f"[ ] Upload {pdf_name} (sha256 {digest[:16]}...), nothing else.",
         "[ ] Copy the fields from the submission sheet; check the author list and ORCID.",

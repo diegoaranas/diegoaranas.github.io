@@ -48,7 +48,10 @@ name = "Diego Arana Segura"
 orcid = "0009-0006-8358-5148"
 
 [archive]
-targets = ["philsci", "philarchive"]  # the site links to the first
+targets = ["philsci"]  # the site links to the first
+# PhilPapers entry: it already offers the PhilSci-Archive copy, so no
+# PhilArchive deposit (that would be a second copy of the same paper).
+philpapers = "ARAEAT-3"
 
 [archive.philsci]
 # as deposited (read from the record page)
@@ -63,9 +66,3 @@ version = 1
 date = "2025-08-28"
 sha256 = "9b0a078d3ab563a1895a996d50790757a3f4dfb8a04e2375712812cc443ed21c"
 
-[archive.philarchive]
-# suggestions only: pick the nearest entries in the form's own list
-subjects = [
-  "Theoretical Equivalence",
-]
-id = ""

@@ -91,7 +91,10 @@ The workflow, from this repo, with `<paper>` the paper's checkout (e.g.
    `CHECKLIST.txt`. The packages stay out of every repo. A paper going to both
    archives is packaged for PhilArchive only once its PhilSci-Archive id is
    recorded, so the PhilArchive (PhilPapers) entry can point at the
-   PhilSci-Archive record. A new version of an existing record goes through
+   PhilSci-Archive record. If PhilPapers already has an entry offering the
+   PhilSci-Archive copy (as for *Equivalence and Theory Expansion*), skip the
+   PhilArchive deposit: set `philpapers = "<entry id>"` in `[archive]` and drop
+   `philarchive` from `targets`. A new version of an existing record goes through
    the record's own new-version route; never a fresh deposit.
 3. **Upload by hand** in the browser, following the checklist.
 4. **Paste the id back:**
