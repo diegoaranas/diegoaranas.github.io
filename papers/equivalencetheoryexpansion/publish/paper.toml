@@ -16,10 +16,9 @@ title = "Equivalence and Theory Expansion"
 status = "published"                 # draft | under-review | published
 journal = "Synthese"
 final_url = "https://link.springer.com/article/10.1007/s11229-025-05236-8"
-date = ""
 license = ""                    # chosen when depositing
 publisher_policy = "unchecked"  # which version may be posted; fill in by hand
-keywords = []  # none in the paper yet
+keywords = ["Equivalence", "Philosophy of Science", "Metaphysics", "Logic", "Metasemantics"]
 abstract = '''
 This paper presents a novel framework for understanding theoretical
 equivalence that reconciles two familiar approaches to the problem: formal and
@@ -47,16 +46,17 @@ orcid = "0009-0006-8358-5148"
 targets = ["philsci", "philarchive"]  # the site links to the first
 
 [archive.philsci]
-# suggestions only: pick the nearest entries in the form's own list
+# as deposited (read from the record page)
 subjects = [
-  "General Issues > Theory/Observation",
-  "Specific Sciences > Logic",
+  "Specific Sciences > Mathematics",
+  "Specific Sciences > Physics",
+  "General Issues > Structure of Theories",
 ]
 id = "26383"
 url = "https://philsci-archive.pitt.edu/26383/"
-version = 0       # unknown: set with `deposit.py record`
-date = ""
-sha256 = ""       # unknown: record --pdf <the file on the archive>
+version = 1
+date = "2025-08-28"
+sha256 = "9b0a078d3ab563a1895a996d50790757a3f4dfb8a04e2375712812cc443ed21c"
 
 [archive.philarchive]
 # suggestions only: pick the nearest entries in the form's own list
