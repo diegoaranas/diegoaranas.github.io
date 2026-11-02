@@ -52,7 +52,7 @@ DEFAULT_PAGE = "research/index.html"
 SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]{1,60}$")
 FORBIDDEN = re.compile(r"<\s*(script|iframe|embed|link|meta|style)\b", re.I)
 OBJECT_DATA = re.compile(r"<\s*object\b[^>]*?\bdata\s*=\s*[\"']([^\"']*)[\"']", re.I)
-# archive name in paper.toml -> (link text, record-page URL)
+# archive name in paper.toml -> (display name, record-page URL)
 ARCHIVES = {
     "philsci": ("PhilSci-Archive", "https://philsci-archive.pitt.edu/{id}/"),
     "philarchive": ("PhilArchive", "https://philarchive.org/rec/{id}"),
@@ -103,7 +103,7 @@ def render_entry(paper: dict) -> str:
     targets = paper["archive"]["targets"]
     if targets and paper["archive"][targets[0]].get("id"):
         rec = paper["archive"][targets[0]]
-        links.append((record_url(targets[0], rec), ARCHIVES[targets[0]][0]))
+        links.append((record_url(targets[0], rec), "Draft"))
     if paper["site_pdf"]:
         links.append(("/files/{{SLUG}}.pdf?v={{VERSION}}", "PDF"))
     if paper.get("final_url"):
