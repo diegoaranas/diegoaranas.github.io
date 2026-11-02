@@ -1,0 +1,66 @@
+# This paper's metadata: the single source for its Research-page entry
+# (tools/publish.py, run by the publish workflow) and its preprint-archive
+# deposits (tools/deposit.py in the site repo). Schema: tools/deposit.py.
+# `deposit.py record` fills in the [archive.*] id/url/version/date/sha256 lines.
+
+# Kept in the site repo: this paper has no repo of its own. The site serves
+# no local PDF (site_pdf = false); the archive record and the publisher's
+# version are its links. Rebuild its entry with tools/publish.py (README).
+
+slug = "equivalencetheoryexpansion"
+pdf = ""
+site_pdf = false
+label = "2025"
+
+title = "Equivalence and Theory Expansion"
+status = "published"                 # draft | under-review | published
+journal = "Synthese"
+final_url = "https://link.springer.com/article/10.1007/s11229-025-05236-8"
+date = ""
+license = ""                    # chosen when depositing
+publisher_policy = "unchecked"  # which version may be posted; fill in by hand
+keywords = []  # none in the paper yet
+abstract = '''
+This paper presents a novel framework for understanding theoretical
+equivalence that reconciles two familiar approaches to the problem: formal and
+content-based approaches. Formal approaches are based on the logical and
+syntactical features of theories, while content-based approaches focus on
+their content as construed in various metaphysical approaches to semantics. I
+argue that these approaches are complementary and that a deeper view of
+equivalence emerges when we consider a theory’s expansion potential—its
+capacity to be embedded in broader theoretical contexts. This notion links
+content to syntax, as syntactical structure constrains how a theory’s
+expressions can be used, and this use in turn determines the theory’s
+possibilities for representing the world across different theoretical
+contexts. The framework is applied to various cases where formal and
+content-based approaches face difficulties, showing that it can explain the
+equivalence and inequivalence of theories where previous approaches failed,
+and that it can better justify the strategies employed by proponents of these
+approaches in each case.
+'''
+
+[[authors]]
+name = "Diego Arana Segura"
+orcid = "0009-0006-8358-5148"
+
+[archive]
+targets = ["philsci", "philarchive"]  # the site links to the first
+
+[archive.philsci]
+# suggestions only: pick the nearest entries in the form's own list
+subjects = [
+  "General Issues > Theory/Observation",
+  "Specific Sciences > Logic",
+]
+id = "26383"
+url = "https://philsci-archive.pitt.edu/26383/"
+version = 0       # unknown: set with `deposit.py record`
+date = ""
+sha256 = ""       # unknown: record --pdf <the file on the archive>
+
+[archive.philarchive]
+# suggestions only: pick the nearest entries in the form's own list
+subjects = [
+  "Theoretical Equivalence",
+]
+id = ""

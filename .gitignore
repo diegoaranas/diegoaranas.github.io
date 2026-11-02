@@ -4,3 +4,6 @@ archive/
 # OS noise
 .DS_Store
 Thumbs.db
+
+# Python bytecode (tools/deposit.py imports tools/publish.py)
+__pycache__/
