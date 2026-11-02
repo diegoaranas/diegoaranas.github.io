@@ -5,7 +5,7 @@ Nothing here talks to an archive.  Uploading is done by hand in the browser;
 this script only builds what to upload and remembers what was uploaded.
 
     python tools/deposit.py status  <paper> [<paper> ...]
-    python tools/deposit.py package <paper> [--archive NAME] [--out DIR]
+    python tools/deposit.py package <paper> [--archive NAME] [--out DIR] [--pdf FILE]
     python tools/deposit.py record  <paper> --archive NAME --id ID
                                     [--version N] [--date YYYY-MM-DD] [--pdf FILE] [--url URL]
 
@@ -100,10 +100,10 @@ def blockers(paper: dict) -> list:
     return out
 
 
-def target_state(paper: dict, folder: Path, name: str):
+def target_state(paper: dict, folder: Path, name: str, pdf_override: Path | None = None):
     """(state, detail) of one archive target."""
     rec = paper["archive"][name]
-    pdf = folder / paper["pdf"] if paper["pdf"] else None
+    pdf = pdf_override or (folder / paper["pdf"] if paper["pdf"] else None)
     if not rec.get("id"):
         return "not deposited", ""
     if not rec.get("sha256"):
@@ -217,9 +217,9 @@ def cmd_package(args) -> None:
     blocked = blockers(paper)
     if blocked:
         die(f"{paper['slug']} is excluded: {'; '.join(blocked)}")
-    if not paper["pdf"]:
-        die(f"{paper['slug']} has no pdf in paper.toml")
-    pdf = args.paper / paper["pdf"]
+    if not args.pdf and not paper["pdf"]:
+        die(f"{paper['slug']} has no pdf in paper.toml: pass --pdf <file>")
+    pdf = args.pdf or args.paper / paper["pdf"]
     if not pdf.is_file() or pdf.read_bytes()[:5] != b"%PDF-":
         die(f"not a PDF: {pdf}")
     digest = sha256(pdf)
@@ -234,7 +234,7 @@ def cmd_package(args) -> None:
     for name in names:
         if name not in targets:
             die(f"{name} is not among {paper['slug']}'s archive targets {targets}")
-        state, _ = target_state(paper, args.paper, name)
+        state, _ = target_state(paper, args.paper, name, pdf)
         if state == "up to date":
             print(f"{paper['slug']}: {ARCHIVES[name][0]} is up to date; nothing to package")
             continue
@@ -315,6 +315,7 @@ def main() -> None:
     p.add_argument("paper", type=Path)
     p.add_argument("--archive", choices=list(ARCHIVES))
     p.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    p.add_argument("--pdf", type=Path, help="the PDF to upload, if paper.toml names none")
     p = sub.add_parser("record", help="write a deposit's id and PDF hash into paper.toml")
     p.add_argument("paper", type=Path)
     p.add_argument("--archive", choices=list(ARCHIVES), required=True)

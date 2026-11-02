@@ -16,8 +16,13 @@ title = "Equivalence and Theory Expansion"
 status = "published"                 # draft | under-review | published
 journal = "Synthese"
 final_url = "https://link.springer.com/article/10.1007/s11229-025-05236-8"
-license = ""                    # chosen when depositing
-publisher_policy = "unchecked"  # which version may be posted; fill in by hand
+date = "2025-08"
+license = "No Creative Commons license (Springer forbids CC for the accepted manuscript)"
+# Decided 2026-11-02: post the accepted manuscript, i.e. the file already on
+# PhilSci-Archive (built 2025-08-25, after Synthese's R3 of 2025-08-18). Springer
+# subscription journals: AM on a personal site at once; in repositories after a
+# 12-month embargo; never under a CC license.
+publisher_policy = "accepted manuscript (post-referee), as on PhilSci-Archive 26383"
 keywords = ["Equivalence", "Philosophy of Science", "Metaphysics", "Logic", "Metasemantics"]
 abstract = '''
 This paper presents a novel framework for understanding theoretical
